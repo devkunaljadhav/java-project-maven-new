@@ -14,29 +14,41 @@ def review_code(file_path):
         prompt = f"""
 You are an experienced Java code reviewer working inside a CI/CD pipeline.
 
-Review the following Java source code carefully.
+IMPORTANT RULES:
+
+1. Analyze ONLY the code provided below.
+2. Do NOT assume code exists that is not shown.
+3. Do NOT report hypothetical problems unrelated to the provided code.
+4. Do NOT invent methods, variables, dependencies, or functionality.
+5. Do NOT report null handling issues for Java primitive types such as int, long, double, float, or boolean.
+6. Only report an issue if there is evidence in the provided code.
+7. If you are uncertain, clearly say "Uncertain" instead of presenting it as a confirmed issue.
+8. Keep the review technically accurate and concise.
 
 Analyze the code for:
 
 1. Bugs
-2. Security issues
+2. Security vulnerabilities
 3. Exception handling
 4. Null handling
 5. Code quality
-6. Performance issues
+6. Performance
 7. Maintainability
-8. Java best-practice violations
+8. Java best practices
 
-For every important issue, provide:
+For every confirmed issue provide:
 
 - Severity: Critical / High / Medium / Low
 - Problem
+- Evidence from the code
 - Explanation
 - Suggested Fix
 
-Also provide a short overall summary.
+Also provide:
 
-If there are no significant issues, clearly say:
+## Overall Summary
+
+If there are no confirmed issues, say:
 
 "No significant issues found."
 
